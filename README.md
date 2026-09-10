@@ -37,7 +37,7 @@ Uplink uploads pasted, dropped, selected, and existing Obsidian attachments dire
   </tr>
 </table>
 
-From top to bottom: run an Uplink command from the command palette, paste an attachment directly into the editor, or open the file picker from the ribbon icon.
+From left to right: run an Uplink command from the command palette, paste an attachment directly into the editor, or open the file picker from the ribbon icon.
 
 ## 中文
 
