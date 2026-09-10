@@ -16,6 +16,10 @@ pnpm-debug.log*
 .cache/
 .eslintcache
 
+# Reproducible release artifacts (attached to GitHub Releases, not committed)
+plugin/main.js
+dist/
+
 # Test and coverage output
 coverage/
 .nyc_output/

@@ -14,6 +14,16 @@
 - **安全删除**：迁移时先上传、再更新链接、再检查全库引用；只有已不被 Markdown 笔记引用的本地文件才会按你的策略移入废纸篓。
 - **安全认证**：使用 Web Crypto 实现阿里云 OSS Signature V4（`OSS4-HMAC-SHA256`），推荐通过 Obsidian SecretStorage 保存 AccessKey。
 
+## 网络与隐私
+
+CloudAttach 不使用中转服务器，也不收集遥测、使用统计或笔记内容。只有在你主动上传、迁移附件或测试连接时，插件才会直接向你在设置中指定的阿里云 OSS 上传端点发送请求：
+
+- 上传或迁移会将文件内容、文件名和 MIME 类型发送到你的 OSS Bucket。
+- 选择“内容哈希”命名策略时，插件会额外向该 Bucket 发起对象存在性检查。
+- “测试阿里云 OSS 连接”会上传一个小型探测文件；如启用公开访问验证，会访问该文件的公开 URL，随后尝试删除该探测文件。
+- AccessKey Secret 仅在本地用于生成 OSS 请求签名，不会发送给 CloudAttach 的作者或任何第三方服务。
+
+请仅配置你信任的 Bucket、端点和公开访问基础 URL。更多安全建议见 [docs/SECURITY.md](docs/SECURITY.md)。
 
 
 ## 安装
@@ -36,17 +46,15 @@
 4. 点击“测试阿里云 OSS 连接”，确认上传连接可用。
 5. 在笔记中粘贴、拖入或选择文件，即可插入 OSS 远程链接。
 
-以广州地域 Bucket `obsidian-space-assets` 为例：
+以广州地域的 Bucket 为例：
 
-
-| 配置项        | 示例值                                                           |
-| ---------- | ------------------------------------------------------------- |
-| Bucket     | `obsidian-attachments-bucket`                                 |
-| 地域         | `cn-guangzhou`                                                |
-| 对象前缀       | `public`                                                      |
-| 公开访问基础 URL | `https://obsidian-space-assets.oss-cn-guangzhou.aliyuncs.com` |
-| 上传端点       | 自动                                                            |
-
+| 配置项 | 示例值 |
+| --- | --- |
+| Bucket | `your-bucket` |
+| 地域 | `cn-guangzhou` |
+| 对象前缀 | `public` |
+| 公开访问基础 URL | `https://your-bucket.oss-cn-guangzhou.aliyuncs.com` |
+| 上传端点 | 自动 |
 
 > 若 Bucket 使用私有读、CDN 或自定义域名，请将“公开访问基础 URL”设为实际可访问的文件 URL 前缀。插件负责上传与生成链接，不提供文件访问鉴权或图床代理。
 
@@ -84,10 +92,12 @@
 在仓库根目录执行：
 
 ```bash
-./build.sh /path/to/your-vault
+./build.sh "/path/to/your-vault"
 ```
 
 该脚本会构建插件并安装至指定 Vault，同时保留既有 CloudAttach 配置。它还会迁移旧版 `universal-attachment-uploader` 的配置和启用状态。
+
+发布到 Obsidian 社区目录的维护者流程见 [docs/RELEASING.md](docs/RELEASING.md)。
 
 ## 致谢与许可证
 

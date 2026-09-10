@@ -1,7 +1,0 @@
-CloudAttach
-
-The safe local-attachment migration workflow in this project is derived from ideas and MIT-licensed code patterns in:
-Attachment Imagebed Manager by Patrick (perinchiang), Copyright (c) 2026 Patrick.
-
-This version is a substantial rewrite focused on direct, cross-platform Aliyun OSS upload and contains no HTTP middleware implementation.
-See LICENSE for the MIT license text.

@@ -5,7 +5,8 @@
   "description": "CloudAttach uploads Obsidian attachments directly to Aliyun OSS across desktop and mobile.",
   "main": "main.js",
   "scripts": {
-    "build": "tsc --noEmit --skipLibCheck && node esbuild.config.mjs production"
+    "build": "tsc --noEmit --skipLibCheck && node esbuild.config.mjs production",
+    "test": "node tests/smoke.mjs"
   },
   "devDependencies": {
     "esbuild": "^0.25.0",
