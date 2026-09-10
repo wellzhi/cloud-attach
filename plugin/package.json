@@ -1,6 +1,6 @@
 {
   "name": "uplink",
-  "version": "1.0.0",
+  "version": "1.13.1",
   "private": true,
   "description": "Uplink uploads Obsidian attachments directly to Aliyun OSS across desktop and mobile.",
   "main": "main.js",
