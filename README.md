@@ -26,14 +26,14 @@ Uplink uploads pasted, dropped, selected, and existing Obsidian attachments dire
 
 <table>
   <tr>
-    <td width="33.33%"><img src="assets/screenshots/1.png" alt="Uplink command palette" width="100%"></td>
-    <td width="33.33%"><img src="assets/screenshots/2.png" alt="Uplink direct paste upload" width="100%"></td>
-    <td width="33.33%"><img src="assets/screenshots/3.png" alt="Uplink file picker" width="100%"></td>
+    <td width="33.33%"><img src="assets/screenshots/1.png" alt="Uplink file picker" width="100%"></td>
+    <td width="33.33%"><img src="assets/screenshots/2.png" alt="Uplink command palette" width="100%"></td>
+    <td width="33.33%"><img src="assets/screenshots/3.png" alt="Uplink direct paste upload" width="100%"></td>
   </tr>
   <tr>
+    <td align="center">File picker</td>
     <td align="center">Command palette</td>
     <td align="center">Direct paste upload</td>
-    <td align="center">File picker</td>
   </tr>
 </table>
 
