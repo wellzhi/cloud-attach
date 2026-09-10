@@ -24,9 +24,18 @@ Uplink uploads pasted, dropped, selected, and existing Obsidian attachments dire
 
 ### Usage walkthrough / 使用演示
 
-![Uplink usage walkthrough: command palette, direct paste upload, and file picker](assets/screenshots/1.png)
-![Uplink usage walkthrough: command palette, direct paste upload, and file picker](assets/screenshots/2.png)
-![Uplink usage walkthrough: command palette, direct paste upload, and file picker](assets/screenshots/3.png)
+<table>
+  <tr>
+    <td width="33.33%"><img src="assets/screenshots/1.png" alt="Uplink command palette" width="100%"></td>
+    <td width="33.33%"><img src="assets/screenshots/2.png" alt="Uplink direct paste upload" width="100%"></td>
+    <td width="33.33%"><img src="assets/screenshots/3.png" alt="Uplink file picker" width="100%"></td>
+  </tr>
+  <tr>
+    <td align="center">Command palette</td>
+    <td align="center">Direct paste upload</td>
+    <td align="center">File picker</td>
+  </tr>
+</table>
 
 From top to bottom: run an Uplink command from the command palette, paste an attachment directly into the editor, or open the file picker from the ribbon icon.
 
