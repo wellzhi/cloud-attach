@@ -22,6 +22,12 @@ Uplink uploads pasted, dropped, selected, and existing Obsidian attachments dire
 3. Paste, drop, or select a file in a Markdown note. Uplink uploads it directly to OSS and inserts a remote Markdown link.
 4. Use the command palette to migrate attachments in the current note or the whole vault. Start with the “Keep local file” deletion policy until you have verified the uploaded files and links.
 
+### Usage walkthrough / 使用演示
+
+![Uplink usage walkthrough: command palette, direct paste upload, and file picker](assets/screenshots/uplink-usage.png)
+
+From top to bottom: run an Uplink command from the command palette, paste an attachment directly into the editor, or open the file picker from the ribbon icon.
+
 ## 中文
 
 **Uplink** 是一款将 Obsidian 附件直接上传至阿里云 OSS 的跨平台插件。它支持桌面端、iPhone 和 iPad；无需自建服务器、Docker、中转服务或桌面端文件系统 API。
