@@ -1,5 +1,29 @@
 # Uplink
 
+Uplink uploads pasted, dropped, selected, and existing Obsidian attachments directly to your Aliyun OSS bucket. It works on desktop, iPhone, and iPad without a middleware server, Docker, or desktop-only file system APIs.
+
+## Installation
+
+### From Obsidian Community Plugins
+
+1. Open **Settings → Community plugins → Browse** in Obsidian.
+2. Search for **Uplink**, then select **Install** and **Enable**.
+
+### Manual installation
+
+1. Download `main.js`, `manifest.json`, and `styles.css` from the [latest GitHub Release](https://github.com/wellzhi/uplink/releases/latest).
+2. Copy them to `<your-vault>/.obsidian/plugins/uplink/`.
+3. Restart Obsidian, then enable **Uplink** under Community plugins.
+
+## Usage
+
+1. In **Settings → Uplink**, configure your bucket, region, object prefix, public base URL, and a least-privilege AccessKey pair. SecretStorage is recommended.
+2. Select **Test Aliyun OSS connection** to verify the configuration.
+3. Paste, drop, or select a file in a Markdown note. Uplink uploads it directly to OSS and inserts a remote Markdown link.
+4. Use the command palette to migrate attachments in the current note or the whole vault. Start with the “Keep local file” deletion policy until you have verified the uploaded files and links.
+
+## 中文
+
 **Uplink** 是一款将 Obsidian 附件直接上传至阿里云 OSS 的跨平台插件。它支持桌面端、iPhone 和 iPad；无需自建服务器、Docker、中转服务或桌面端文件系统 API。
 
 粘贴、拖入或选择文件后，Uplink 会把文件直接传到你的 OSS Bucket，并将笔记中的本地附件链接替换为远程链接。已有附件也可以按当前笔记或整个库批量迁移。
@@ -30,7 +54,7 @@ Uplink 不使用中转服务器，也不收集遥测、使用统计或笔记内�
 
 插件发布后，可在 Obsidian 的 **设置 → 第三方插件 → 浏览** 中搜索 `Uplink` 并安装启用。
 
-也可以手动安装：将发行包中的 `main.js`、`manifest.json`、`styles.css` 和 `versions.json` 复制到：
+也可以手动安装：从 [最新 GitHub Release](https://github.com/wellzhi/uplink/releases/latest) 下载 `main.js`、`manifest.json` 和 `styles.css`，并复制到：
 
 ```text
 <你的 Vault>/.obsidian/plugins/uplink/
