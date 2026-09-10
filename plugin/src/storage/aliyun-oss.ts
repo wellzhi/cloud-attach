@@ -242,8 +242,8 @@ export class AliyunOssUploader implements AttachmentUploader {
     this.validateConfig();
     this.credentials();
     const config = this.settings();
-    const key = [normalizePrefix(config.prefix), ".cloud-attach-probe", "connection.txt"].filter(Boolean).join("/");
-    const bytes = new TextEncoder().encode("CloudAttach OSS probe").buffer;
+    const key = [normalizePrefix(config.prefix), ".uplink-probe", "connection.txt"].filter(Boolean).join("/");
+    const bytes = new TextEncoder().encode("Uplink OSS probe").buffer;
     await this.put(key, bytes, "text/plain; charset=utf-8");
 
     let publicReadOk: boolean | null = null;

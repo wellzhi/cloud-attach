@@ -33,13 +33,13 @@ if (tag && tag !== manifest.version) fail(`Git tag ${tag} does not match manifes
 
 for (const filename of metadataFiles) {
   const expected = await readJson(filename);
-  for (const directory of ["plugin", "dist/cloud-attach"]) {
+  for (const directory of ["plugin", "dist/uplink"]) {
     const actual = await readJson(`${directory}/${filename}`);
     if (JSON.stringify(actual) !== JSON.stringify(expected)) fail(`${directory}/${filename} does not match root ${filename}.`);
   }
 }
 
-for (const relativePath of ["README.md", "LICENSE", "dist/cloud-attach/main.js", "dist/cloud-attach/styles.css"]) {
+for (const relativePath of ["README.md", "LICENSE", "dist/uplink/main.js", "dist/uplink/styles.css"]) {
   try {
     await access(join(repositoryRoot, relativePath));
   } catch {
@@ -47,4 +47,4 @@ for (const relativePath of ["README.md", "LICENSE", "dist/cloud-attach/main.js",
   }
 }
 
-console.log(`Release metadata verified for CloudAttach ${manifest.version}.`);
+console.log(`Release metadata verified for Uplink ${manifest.version}.`);

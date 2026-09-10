@@ -7,4 +7,4 @@ export const distributionFiles = [
   "NOTICE"
 ];
 
-export const legacyPluginIds = ["universal-attachment-uploader"];
+export const legacyPluginIds = ["cloud-attach", "universal-attachment-uploader"];

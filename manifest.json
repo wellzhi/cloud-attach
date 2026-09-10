@@ -1,6 +1,6 @@
 {
-  "id": "cloud-attach",
-  "name": "CloudAttach",
+  "id": "uplink",
+  "name": "Uplink",
   "version": "1.0.0",
   "minAppVersion": "1.13.0",
   "description": "Upload pasted, dropped, selected, or existing attachments directly to Aliyun OSS on desktop and mobile.",

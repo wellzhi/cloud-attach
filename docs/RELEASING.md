@@ -1,6 +1,6 @@
-# Releasing CloudAttach
+# Releasing Uplink
 
-This project is prepared for the Obsidian Community directory. The root `manifest.json` and `versions.json` are the canonical release metadata. `plugin/` and `dist/cloud-attach/` receive synchronized copies during a release build.
+This project is prepared for the Obsidian Community directory. The root `manifest.json` and `versions.json` are the canonical release metadata. `plugin/` and `dist/uplink/` receive synchronized copies during a release build.
 
 ## Before the first submission
 
@@ -27,17 +27,17 @@ This project is prepared for the Obsidian Community directory. The root `manifes
 4. Create and push an annotated Git tag that exactly matches `manifest.json`'s version, for example:
 
    ```bash
-   git tag -a 1.0.0 -m "CloudAttach 1.0.0"
+   git tag -a 1.0.0 -m "Uplink 1.0.0"
    git push origin 1.0.0
    ```
 
-The GitHub Actions release workflow verifies that the tag matches the manifest and uploads `main.js`, `manifest.json`, and `styles.css` from `dist/cloud-attach/` as individual GitHub Release assets.
+The GitHub Actions release workflow verifies that the tag matches the manifest and uploads `main.js`, `manifest.json`, and `styles.css` from `dist/uplink/` as individual GitHub Release assets.
 
 ## Submit to the directory
 
 1. Sign in at [community.obsidian.md](https://community.obsidian.md) with an Obsidian account.
-2. Connect the GitHub account that owns `wellzhi/cloud-attach`.
-3. Submit the plugin with repository URL `https://github.com/wellzhi/cloud-attach` and accept the developer policies.
+2. Connect the GitHub account that owns `wellzhi/uplink`.
+3. Submit the plugin with repository URL `https://github.com/wellzhi/uplink` and accept the developer policies.
 4. Address any scanner or reviewer feedback in the directory before publishing another release.
 
 Only the initial version needs directory review. Later updates are delivered by publishing a GitHub Release whose tag exactly matches the new manifest version.

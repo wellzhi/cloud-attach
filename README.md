@@ -1,8 +1,8 @@
-# CloudAttach
+# Uplink
 
-**CloudAttach** 是一款将 Obsidian 附件直接上传至阿里云 OSS 的跨平台插件。它支持桌面端、iPhone 和 iPad；无需自建服务器、Docker、中转服务或桌面端文件系统 API。
+**Uplink** 是一款将 Obsidian 附件直接上传至阿里云 OSS 的跨平台插件。它支持桌面端、iPhone 和 iPad；无需自建服务器、Docker、中转服务或桌面端文件系统 API。
 
-粘贴、拖入或选择文件后，CloudAttach 会把文件直接传到你的 OSS Bucket，并将笔记中的本地附件链接替换为远程链接。已有附件也可以按当前笔记或整个库批量迁移。
+粘贴、拖入或选择文件后，Uplink 会把文件直接传到你的 OSS Bucket，并将笔记中的本地附件链接替换为远程链接。已有附件也可以按当前笔记或整个库批量迁移。
 
 ## 功能
 
@@ -16,32 +16,32 @@
 
 ## 网络与隐私
 
-CloudAttach 不使用中转服务器，也不收集遥测、使用统计或笔记内容。只有在你主动上传、迁移附件或测试连接时，插件才会直接向你在设置中指定的阿里云 OSS 上传端点发送请求：
+Uplink 不使用中转服务器，也不收集遥测、使用统计或笔记内容。只有在你主动上传、迁移附件或测试连接时，插件才会直接向你在设置中指定的阿里云 OSS 上传端点发送请求：
 
 - 上传或迁移会将文件内容、文件名和 MIME 类型发送到你的 OSS Bucket。
 - 选择“内容哈希”命名策略时，插件会额外向该 Bucket 发起对象存在性检查。
 - “测试阿里云 OSS 连接”会上传一个小型探测文件；如启用公开访问验证，会访问该文件的公开 URL，随后尝试删除该探测文件。
-- AccessKey Secret 仅在本地用于生成 OSS 请求签名，不会发送给 CloudAttach 的作者或任何第三方服务。
+- AccessKey Secret 仅在本地用于生成 OSS 请求签名，不会发送给 Uplink 的作者或任何第三方服务。
 
 请仅配置你信任的 Bucket、端点和公开访问基础 URL。更多安全建议见 [docs/SECURITY.md](docs/SECURITY.md)。
 
 
 ## 安装
 
-插件发布后，可在 Obsidian 的 **设置 → 第三方插件 → 浏览** 中搜索 `CloudAttach` 并安装启用。
+插件发布后，可在 Obsidian 的 **设置 → 第三方插件 → 浏览** 中搜索 `Uplink` 并安装启用。
 
 也可以手动安装：将发行包中的 `main.js`、`manifest.json`、`styles.css` 和 `versions.json` 复制到：
 
 ```text
-<你的 Vault>/.obsidian/plugins/cloud-attach/
+<你的 Vault>/.obsidian/plugins/uplink/
 ```
 
-重启 Obsidian 后，在“第三方插件”中启用 **CloudAttach**。
+重启 Obsidian 后，在“第三方插件”中启用 **Uplink**。
 
 ## 快速开始
 
 1. 在阿里云 OSS 创建 Bucket，并准备一个仅授予该 Bucket 必要权限的 RAM 用户 AccessKey；请勿使用阿里云主账号 AccessKey。
-2. 打开 **设置 → CloudAttach**，填写 Bucket 名称、地域、对象前缀和公开访问基础 URL。
+2. 打开 **设置 → Uplink**，填写 Bucket 名称、地域、对象前缀和公开访问基础 URL。
 3. 推荐在 **SecretStorage** 模式中分别创建或关联 AccessKey ID 与 AccessKey Secret；如选择“插件设置”模式，密钥会以明文保存至插件配置文件，仅建议用于权限受限的专用 RAM 密钥。
 4. 点击“测试阿里云 OSS 连接”，确认上传连接可用。
 5. 在笔记中粘贴、拖入或选择文件，即可插入 OSS 远程链接。
@@ -64,10 +64,10 @@ CloudAttach 不使用中转服务器，也不收集遥测、使用统计或笔�
 
 命令面板提供以下命令：
 
-- `CloudAttach: 迁移当前笔记中的本地附件`
-- `CloudAttach: 迁移整个库中的本地附件`
+- `Uplink: 迁移当前笔记中的本地附件`
+- `Uplink: 迁移整个库中的本地附件`
 
-迁移会将每个本地文件最多上传一次，再原子化更新笔记中的引用。删除策略可设为“保留本地文件”“确认后删除”或“立即移入废纸篓”。即使选择立即删除，CloudAttach 也会先重新检查整个 Vault 的 Markdown 引用；上传失败的文件绝不会被删除。
+迁移会将每个本地文件最多上传一次，再原子化更新笔记中的引用。删除策略可设为“保留本地文件”“确认后删除”或“立即移入废纸篓”。即使选择立即删除，Uplink 也会先重新检查整个 Vault 的 Markdown 引用；上传失败的文件绝不会被删除。
 
 建议第一次迁移时选择“保留本地文件”或“确认后删除”，核验 OSS 文件及笔记链接后再清理本地附件。
 
@@ -95,7 +95,7 @@ CloudAttach 不使用中转服务器，也不收集遥测、使用统计或笔�
 ./build.sh "/path/to/your-vault"
 ```
 
-该脚本会构建插件并安装至指定 Vault，同时保留既有 CloudAttach 配置。它还会迁移旧版 `universal-attachment-uploader` 的配置和启用状态。
+该脚本会构建插件并安装至指定 Vault，同时保留并迁移旧插件的配置与启用状态。
 
 发布到 Obsidian 社区目录的维护者流程见 [docs/RELEASING.md](docs/RELEASING.md)。
 

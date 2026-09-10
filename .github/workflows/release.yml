@@ -1,4 +1,4 @@
-name: Release CloudAttach
+name: Release Uplink
 
 on:
   push:
@@ -44,8 +44,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${GITHUB_REF_NAME}" \
-            dist/cloud-attach/main.js \
-            dist/cloud-attach/manifest.json \
-            dist/cloud-attach/styles.css \
-            --title "CloudAttach ${GITHUB_REF_NAME}" \
+            dist/uplink/main.js \
+            dist/uplink/manifest.json \
+            dist/uplink/styles.css \
+            --title "Uplink ${GITHUB_REF_NAME}" \
             --generate-notes

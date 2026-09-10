@@ -1,5 +1,5 @@
 import { App, Notice, PluginSettingTab, SecretComponent, Setting } from "obsidian";
-import type CloudAttachPlugin from "../main";
+import type UplinkPlugin from "../main";
 import { normalizePrefix, normalizeRegion } from "../settings";
 import type { CredentialMode, DeletePolicy, EndpointMode, KeyStrategy } from "../types";
 import { t } from "../i18n";
@@ -8,23 +8,23 @@ function parseExtensions(value: string): string[] {
   return Array.from(new Set(value.split(/[,\s]+/).map((part) => part.trim().toLowerCase().replace(/^\./, "")).filter(Boolean))).sort();
 }
 
-export class CloudAttachSettingTab extends PluginSettingTab {
-  constructor(app: App, private readonly plugin: CloudAttachPlugin) {
+export class UplinkSettingTab extends PluginSettingTab {
+  constructor(app: App, private readonly plugin: UplinkPlugin) {
     super(app, plugin);
   }
 
   display(): void {
     const { containerEl } = this;
     containerEl.empty();
-    containerEl.addClass("cloud-attach-settings");
+    containerEl.addClass("uplink-settings");
 
     const ready = this.plugin.credentialsConfigured();
-    const hero = containerEl.createDiv({ cls: "cloud-attach-settings-hero" });
+    const hero = containerEl.createDiv({ cls: "uplink-settings-hero" });
     hero.createEl("h2", { text: t("settingsTitle") });
-    hero.createEl("p", { text: t("settingsIntro"), cls: "cloud-attach-muted" });
-    const statusRow = hero.createDiv({ cls: "cloud-attach-status-row" });
-    statusRow.createSpan({ text: t("statusDirect"), cls: "cloud-attach-status-pill is-direct" });
-    statusRow.createSpan({ text: ready ? t("statusReady") : t("statusMissing"), cls: `cloud-attach-status-pill ${ready ? "is-ready" : "is-warning"}` });
+    hero.createEl("p", { text: t("settingsIntro"), cls: "uplink-muted" });
+    const statusRow = hero.createDiv({ cls: "uplink-status-row" });
+    statusRow.createSpan({ text: t("statusDirect"), cls: "uplink-status-pill is-direct" });
+    statusRow.createSpan({ text: ready ? t("statusReady") : t("statusMissing"), cls: `uplink-status-pill ${ready ? "is-ready" : "is-warning"}` });
 
     this.section(containerEl, t("ossSection"), t("ossDesc"));
     new Setting(containerEl).setName(t("bucket")).setDesc(t("bucketDesc")).addText((text) => text
@@ -66,7 +66,7 @@ export class CloudAttachSettingTab extends PluginSettingTab {
       .onChange(async (value) => { this.plugin.settings.oss.credentialMode = value as CredentialMode; await this.plugin.saveSettings(); this.display(); }));
 
     if (this.plugin.settings.oss.credentialMode === "secret") {
-      containerEl.createEl("p", { text: t("secretModeDesc"), cls: "cloud-attach-info" });
+      containerEl.createEl("p", { text: t("secretModeDesc"), cls: "uplink-info" });
       new Setting(containerEl).setName(t("accessKeyIdSecret")).setDesc(t("secretDesc")).addComponent((el) => new SecretComponent(this.app, el)
         .setValue(this.plugin.settings.oss.accessKeyIdSecretName)
         .onChange(async (value) => { this.plugin.settings.oss.accessKeyIdSecretName = value; await this.plugin.saveSettings(); }));
@@ -74,7 +74,7 @@ export class CloudAttachSettingTab extends PluginSettingTab {
         .setValue(this.plugin.settings.oss.accessKeySecretSecretName)
         .onChange(async (value) => { this.plugin.settings.oss.accessKeySecretSecretName = value; await this.plugin.saveSettings(); }));
     } else {
-      containerEl.createEl("p", { text: t("plainModeWarning"), cls: "cloud-attach-warning" });
+      containerEl.createEl("p", { text: t("plainModeWarning"), cls: "uplink-warning" });
       new Setting(containerEl).setName(t("accessKeyId")).addText((text) => text
         .setValue(this.plugin.settings.oss.accessKeyId)
         .onChange(async (value) => { this.plugin.settings.oss.accessKeyId = value.trim(); await this.plugin.saveSettings(); }));
@@ -117,12 +117,12 @@ export class CloudAttachSettingTab extends PluginSettingTab {
     new Setting(containerEl).setName(t("verifyPublic")).addToggle((toggle) => toggle.setValue(this.plugin.settings.oss.verifyPublicAccessOnTest).onChange(async (value) => { this.plugin.settings.oss.verifyPublicAccessOnTest = value; await this.plugin.saveSettings(); }));
     new Setting(containerEl).setName(t("ignored")).setDesc(t("ignoredDesc")).addTextArea((area) => area.setPlaceholder("exe,dmg").setValue(this.plugin.settings.ignoredExtensions.join(", ")).onChange(async (value) => { this.plugin.settings.ignoredExtensions = parseExtensions(value); await this.plugin.saveSettings(); }));
 
-    containerEl.createDiv({ text: t("mobileNote"), cls: "cloud-attach-mobile-note" });
+    containerEl.createDiv({ text: t("mobileNote"), cls: "uplink-mobile-note" });
   }
 
   private section(containerEl: HTMLElement, title: string, description?: string): void {
-    const wrap = containerEl.createDiv({ cls: "cloud-attach-section-heading" });
+    const wrap = containerEl.createDiv({ cls: "uplink-section-heading" });
     wrap.createEl("h3", { text: title });
-    if (description) wrap.createEl("p", { text: description, cls: "cloud-attach-muted" });
+    if (description) wrap.createEl("p", { text: description, cls: "uplink-muted" });
   }
 }

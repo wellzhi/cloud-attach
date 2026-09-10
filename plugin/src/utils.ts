@@ -46,7 +46,7 @@ export function renderRemoteLink(filename: string, url: string, mimeType: string
   return `[${label || "attachment"}](${url})`;
 }
 
-export function randomToken(prefix = "cloud-attach"): string {
+export function randomToken(prefix = "uplink"): string {
   const bytes = new Uint8Array(8);
   crypto.getRandomValues(bytes);
   const random = Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");

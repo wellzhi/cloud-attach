@@ -7,13 +7,13 @@ import type { PluginSettings, UploadPayload } from "./types";
 import { collectTransferFiles, mapLimit, mimeTypeFor, randomToken, renderRemoteLink, replaceEditorToken } from "./utils";
 import { FilePickerModal } from "./ui/file-picker-modal";
 import { MigrationModal } from "./ui/migration-modal";
-import { CloudAttachSettingTab } from "./ui/settings-tab";
+import { UplinkSettingTab } from "./ui/settings-tab";
 
 function errorMessage(value: unknown): string {
   return value instanceof Error ? value.message : String(value);
 }
 
-export default class CloudAttachPlugin extends Plugin {
+export default class UplinkPlugin extends Plugin {
   settings!: PluginSettings;
   readonly uploader = new AliyunOssUploader(this.app, () => this.settings.oss);
   private attachmentService!: AttachmentService;
@@ -27,7 +27,7 @@ export default class CloudAttachPlugin extends Plugin {
     this.addCommand({ id: "migrate-current-note", name: t("migrateCurrent"), callback: () => void this.migrateCurrentNote() });
     this.addCommand({ id: "migrate-vault", name: t("migrateVault"), callback: () => void this.migrateVault() });
     this.addCommand({ id: "test-aliyun-oss", name: t("testOss"), callback: () => void this.testOssConnection() });
-    this.addSettingTab(new CloudAttachSettingTab(this.app, this));
+    this.addSettingTab(new UplinkSettingTab(this.app, this));
 
     this.registerEvent(this.app.workspace.on("editor-paste", (evt: ClipboardEvent, editor: Editor, info: MarkdownView | MarkdownFileInfo) => {
       if (evt.defaultPrevented || !this.settings.enabled || !this.settings.uploadOnPaste) return;
@@ -103,7 +103,7 @@ export default class CloudAttachPlugin extends Plugin {
       return;
     }
 
-    const placeholders = accepted.map((file) => ({ file, token: `<!-- ${randomToken("cloud-attach-pending")} -->` }));
+    const placeholders = accepted.map((file) => ({ file, token: `<!-- ${randomToken("uplink-pending")} -->` }));
     editor.replaceSelection(placeholders.map((item) => item.token).join("\n"));
 
     const notice = new Notice(t("uploading", { current: 0, total: accepted.length, name: "…" }), 0);

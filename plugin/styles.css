@@ -1,8 +1,8 @@
-.cloud-attach-settings {
+.uplink-settings {
   max-width: 780px;
 }
 
-.cloud-attach-settings-hero {
+.uplink-settings-hero {
   position: relative;
   padding: 18px 20px;
   margin: 8px 0 22px;
@@ -11,15 +11,15 @@
   background: var(--background-secondary);
 }
 
-.cloud-attach-settings-hero h2 {
+.uplink-settings-hero h2 {
   margin: 0 0 8px;
 }
 
-.cloud-attach-muted {
+.uplink-muted {
   color: var(--text-muted);
 }
 
-.cloud-attach-status-pill {
+.uplink-status-pill {
   display: inline-flex;
   align-items: center;
   margin-top: 10px;
@@ -30,46 +30,46 @@
   color: var(--text-muted);
 }
 
-.cloud-attach-status-pill.is-ready {
+.uplink-status-pill.is-ready {
   color: var(--text-success);
 }
 
-.cloud-attach-status-pill.is-warning {
+.uplink-status-pill.is-warning {
   color: var(--text-warning);
 }
 
-.cloud-attach-section-heading {
+.uplink-section-heading {
   margin: 26px 0 8px;
   padding-top: 14px;
   border-top: 1px solid var(--background-modifier-border);
 }
 
-.cloud-attach-section-heading h3 {
+.uplink-section-heading h3 {
   margin: 0 0 4px;
 }
 
-.cloud-attach-section-heading p {
+.uplink-section-heading p {
   margin: 0;
 }
 
-.cloud-attach-mobile-note,
-.cloud-attach-info,
-.cloud-attach-warning {
+.uplink-mobile-note,
+.uplink-info,
+.uplink-warning {
   margin: 16px 0;
   padding: 12px 14px;
   border-radius: var(--radius-m);
   background: var(--background-secondary);
 }
 
-.cloud-attach-warning {
+.uplink-warning {
   color: var(--text-warning);
 }
 
-.cloud-attach-modal {
+.uplink-modal {
   max-width: min(720px, 94vw);
 }
 
-.cloud-attach-file-picker {
+.uplink-file-picker {
   position: relative;
   min-height: 150px;
   display: flex;
@@ -84,21 +84,21 @@
   cursor: pointer;
 }
 
-.cloud-attach-file-picker:hover {
+.uplink-file-picker:hover {
   background: var(--background-modifier-hover);
 }
 
-.cloud-attach-file-picker-icon {
+.uplink-file-picker-icon {
   font-size: 34px;
   line-height: 1;
   color: var(--interactive-accent);
 }
 
-.cloud-attach-file-picker-title {
+.uplink-file-picker-title {
   font-weight: var(--font-semibold);
 }
 
-.cloud-attach-native-file-input {
+.uplink-native-file-input {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -106,22 +106,22 @@
   pointer-events: none;
 }
 
-.cloud-attach-actions {
+.uplink-actions {
   margin-top: 18px;
 }
 
-.cloud-attach-summary {
+.uplink-summary {
   margin: 10px 0 14px;
 }
 
-.cloud-attach-preview-list {
+.uplink-preview-list {
   max-height: 280px;
   overflow: auto;
   border: 1px solid var(--background-modifier-border);
   border-radius: var(--radius-m);
 }
 
-.cloud-attach-preview-row {
+.uplink-preview-row {
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -129,23 +129,23 @@
   border-bottom: 1px solid var(--background-modifier-border);
 }
 
-.cloud-attach-preview-row:last-child {
+.uplink-preview-row:last-child {
   border-bottom: 0;
 }
 
-.cloud-attach-preview-name {
+.uplink-preview-name {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.cloud-attach-progress {
+.uplink-progress {
   width: 100%;
   height: 8px;
   margin: 14px 0;
 }
 
-.cloud-attach-error {
+.uplink-error {
   max-height: 220px;
   overflow: auto;
   white-space: pre-wrap;
@@ -156,52 +156,52 @@
 }
 
 @media (max-width: 600px) {
-  .cloud-attach-settings-hero,
-  .cloud-attach-file-picker {
+  .uplink-settings-hero,
+  .uplink-file-picker {
     padding: 16px;
   }
 
-  .cloud-attach-modal {
+  .uplink-modal {
     max-width: 96vw;
   }
 
-  .cloud-attach-preview-row {
+  .uplink-preview-row {
     align-items: flex-start;
     flex-direction: column;
     gap: 4px;
   }
 }
 
-.cloud-attach-status-row {
+.uplink-status-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
 }
 
-.cloud-attach-status-pill.is-direct {
+.uplink-status-pill.is-direct {
   color: var(--interactive-accent);
   background: color-mix(in srgb, var(--interactive-accent) 12%, transparent);
 }
 
-.cloud-attach-settings .setting-item {
+.uplink-settings .setting-item {
   padding-top: 14px;
   padding-bottom: 14px;
 }
 
-.cloud-attach-settings .setting-item-control input[type="text"],
-.cloud-attach-settings .setting-item-control input[type="password"],
-.cloud-attach-settings .setting-item-control textarea {
+.uplink-settings .setting-item-control input[type="text"],
+.uplink-settings .setting-item-control input[type="password"],
+.uplink-settings .setting-item-control textarea {
   min-width: min(330px, 48vw);
 }
 
 @media (max-width: 600px) {
-  .cloud-attach-settings .setting-item {
+  .uplink-settings .setting-item {
     align-items: stretch;
   }
-  .cloud-attach-settings .setting-item-control input[type="text"],
-  .cloud-attach-settings .setting-item-control input[type="password"],
-  .cloud-attach-settings .setting-item-control textarea {
+  .uplink-settings .setting-item-control input[type="text"],
+  .uplink-settings .setting-item-control input[type="password"],
+  .uplink-settings .setting-item-control textarea {
     min-width: 0;
     width: 100%;
   }

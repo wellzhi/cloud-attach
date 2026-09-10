@@ -14,7 +14,7 @@ export class MigrationModal extends Modal {
   }
 
   onOpen(): void {
-    this.modalEl.addClass("cloud-attach-modal", "cloud-attach-migration-modal");
+    this.modalEl.addClass("uplink-modal", "uplink-migration-modal");
     this.renderPlan();
   }
 
@@ -28,20 +28,20 @@ export class MigrationModal extends Modal {
         links: this.plan.totalReferences,
         size: formatBytes(this.plan.totalBytes)
       }),
-      cls: "cloud-attach-summary"
+      cls: "uplink-summary"
     });
 
-    const list = this.contentEl.createDiv({ cls: "cloud-attach-preview-list" });
+    const list = this.contentEl.createDiv({ cls: "uplink-preview-list" });
     for (const file of this.plan.uniqueFiles.slice(0, 12)) {
-      const row = list.createDiv({ cls: "cloud-attach-preview-row" });
-      row.createSpan({ text: file.name, cls: "cloud-attach-preview-name" });
-      row.createSpan({ text: formatBytes(file.stat.size), cls: "cloud-attach-muted" });
+      const row = list.createDiv({ cls: "uplink-preview-row" });
+      row.createSpan({ text: file.name, cls: "uplink-preview-name" });
+      row.createSpan({ text: formatBytes(file.stat.size), cls: "uplink-muted" });
     }
     if (this.plan.uniqueFiles.length > 12) {
-      list.createDiv({ text: `+${this.plan.uniqueFiles.length - 12}`, cls: "cloud-attach-muted" });
+      list.createDiv({ text: `+${this.plan.uniqueFiles.length - 12}`, cls: "uplink-muted" });
     }
 
-    const actions = this.contentEl.createDiv({ cls: "cloud-attach-actions" });
+    const actions = this.contentEl.createDiv({ cls: "uplink-actions" });
     new Setting(actions)
       .addButton((button) => button.setButtonText(t("cancel")).onClick(() => this.close()))
       .addButton((button) => button.setButtonText(t("startMigration")).setCta().onClick(() => void this.start()));
@@ -57,7 +57,7 @@ export class MigrationModal extends Modal {
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       new Notice(message, 10000);
-      this.contentEl.createEl("pre", { text: message, cls: "cloud-attach-error" });
+      this.contentEl.createEl("pre", { text: message, cls: "uplink-error" });
     } finally {
       this.running = false;
     }
@@ -66,10 +66,10 @@ export class MigrationModal extends Modal {
   private renderProgress(): void {
     this.contentEl.empty();
     new Setting(this.contentEl).setName(t("migrating")).setHeading();
-    this.progress = this.contentEl.createEl("progress", { cls: "cloud-attach-progress" });
+    this.progress = this.contentEl.createEl("progress", { cls: "uplink-progress" });
     this.progress.max = 100;
     this.progress.value = 0;
-    this.progressText = this.contentEl.createDiv({ text: "…", cls: "cloud-attach-summary" });
+    this.progressText = this.contentEl.createDiv({ text: "…", cls: "uplink-summary" });
   }
 
   private updateProgress(state: ProgressState): void {
@@ -96,20 +96,20 @@ export class MigrationModal extends Modal {
         links: result.linksReplaced,
         deleted: result.filesDeleted
       }),
-      cls: "cloud-attach-summary"
+      cls: "uplink-summary"
     });
-    if (result.filesProtected) this.contentEl.createEl("p", { text: t("protected", { count: result.filesProtected }), cls: "cloud-attach-info" });
+    if (result.filesProtected) this.contentEl.createEl("p", { text: t("protected", { count: result.filesProtected }), cls: "uplink-info" });
     if (result.failures.length) {
-      this.contentEl.createEl("p", { text: t("failedCount", { count: result.failures.length }), cls: "cloud-attach-warning" });
+      this.contentEl.createEl("p", { text: t("failedCount", { count: result.failures.length }), cls: "uplink-warning" });
       this.contentEl.createEl("pre", {
         text: result.failures.slice(0, 20).map((item) => `${item.path}: ${item.message}`).join("\n"),
-        cls: "cloud-attach-error"
+        cls: "uplink-error"
       });
     }
 
-    const actions = this.contentEl.createDiv({ cls: "cloud-attach-actions" });
+    const actions = this.contentEl.createDiv({ cls: "uplink-actions" });
     if (result.pendingDelete.length) {
-      this.contentEl.createEl("p", { text: t("pendingDelete", { count: result.pendingDelete.length }), cls: "cloud-attach-info" });
+      this.contentEl.createEl("p", { text: t("pendingDelete", { count: result.pendingDelete.length }), cls: "uplink-info" });
       new Setting(actions)
         .addButton((button) => button.setButtonText(t("keepNow")).onClick(() => this.close()))
         .addButton((button) => {

@@ -7,16 +7,16 @@ export class FilePickerModal extends Modal {
   }
 
   onOpen(): void {
-    this.modalEl.addClass("cloud-attach-modal");
+    this.modalEl.addClass("uplink-modal");
     this.contentEl.empty();
     new Setting(this.contentEl).setName(t("chooseTitle")).setHeading();
-    this.contentEl.createEl("p", { text: t("chooseDesc"), cls: "cloud-attach-muted" });
+    this.contentEl.createEl("p", { text: t("chooseDesc"), cls: "uplink-muted" });
 
-    const chooser = this.contentEl.createDiv({ cls: "cloud-attach-file-picker" });
-    chooser.createDiv({ text: "↑", cls: "cloud-attach-file-picker-icon" });
-    chooser.createDiv({ text: t("chooseButton"), cls: "cloud-attach-file-picker-title" });
+    const chooser = this.contentEl.createDiv({ cls: "uplink-file-picker" });
+    chooser.createDiv({ text: "↑", cls: "uplink-file-picker-icon" });
+    chooser.createDiv({ text: t("chooseButton"), cls: "uplink-file-picker-title" });
 
-    const input = chooser.createEl("input", { type: "file", cls: "cloud-attach-native-file-input" });
+    const input = chooser.createEl("input", { type: "file", cls: "uplink-native-file-input" });
     input.multiple = true;
     input.addEventListener("change", () => {
       const files = Array.from(input.files || []) as File[];
@@ -29,7 +29,7 @@ export class FilePickerModal extends Modal {
       if (event.target !== input) input.click();
     });
 
-    const actions = this.contentEl.createDiv({ cls: "cloud-attach-actions" });
+    const actions = this.contentEl.createDiv({ cls: "uplink-actions" });
     new Setting(actions).addButton((button) => button.setButtonText(t("close")).onClick(() => this.close()));
   }
 }
